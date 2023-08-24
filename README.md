@@ -5,4 +5,4 @@
 
 # Remote app
 
-    url : 
+    url : https://stackblitz.com/edit/stackblitz-starters-aytv7l?file=package.json
