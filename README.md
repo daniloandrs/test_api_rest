@@ -1,1 +1,8 @@
-# test_api_rest
+# Local run
+    # npm install
+    # npm run serve
+
+
+# Remote app
+
+    url : 
