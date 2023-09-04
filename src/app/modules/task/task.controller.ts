@@ -43,4 +43,16 @@ export class TaskController extends Controller {
     return await TaskUseCase.delete(taskId);
   }
 
+  @Put('mark_completed/{taskId}')
+  @SuccessResponse(200, 'Success Response')
+  public async markCompleted(
+    taskId: string
+  ) {
+    try {
+      return await TaskUseCase.markCompleted(taskId)
+    } catch (error) {
+      return Promise.reject({ message: 'Internal Server Error' });
+    }
+  }
+
 }

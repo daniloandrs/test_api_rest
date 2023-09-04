@@ -16,17 +16,22 @@
 						"nullable": true
 					},
 					"status": {
-						"type": "boolean"
+						"type": "string"
 					},
 					"id": {
 						"type": "string"
+					},
+					"date": {
+						"type": "number",
+						"format": "double"
 					}
 				},
 				"required": [
 					"title",
 					"description",
 					"status",
-					"id"
+					"id",
+					"date"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -41,7 +46,7 @@
 						"nullable": true
 					},
 					"status": {
-						"type": "boolean"
+						"type": "string"
 					}
 				},
 				"required": [
@@ -119,7 +124,9 @@
 							"application/json": {
 								"schema": {
 									"properties": {
-										"info": {},
+										"info": {
+											"$ref": "#/components/schemas/Task"
+										},
 										"success": {
 											"type": "boolean"
 										},
@@ -165,7 +172,9 @@
 							"application/json": {
 								"schema": {
 									"properties": {
-										"info": {},
+										"info": {
+											"$ref": "#/components/schemas/Task"
+										},
 										"success": {
 											"type": "boolean"
 										},
@@ -220,7 +229,56 @@
 							"application/json": {
 								"schema": {
 									"properties": {
-										"info": {},
+										"info": {
+											"$ref": "#/components/schemas/Task"
+										},
+										"success": {
+											"type": "boolean"
+										},
+										"message": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"info",
+										"success",
+										"message"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"task"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "taskId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/task/mark_completed/{taskId}": {
+			"put": {
+				"operationId": "MarkCompleted",
+				"responses": {
+					"200": {
+						"description": "Success Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"info": {
+											"$ref": "#/components/schemas/Task"
+										},
 										"success": {
 											"type": "boolean"
 										},
